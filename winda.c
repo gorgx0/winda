@@ -90,6 +90,13 @@ ISR(PCINT1_vect){
 	cli();
 
 	_delay_ms(100);
+
+	if((is_pressed(top_up_button) && is_pressed(top_down_button)) || (is_pressed(bottom_up_button) && is_pressed(bottom_down_button))){
+		engine_stop();
+		_delay_ms(100);
+		sei();
+		return ;
+	}
 	
 
 	if(is_pressed(top_up_button) || is_pressed(bottom_up_button)){
